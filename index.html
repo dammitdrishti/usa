@@ -1,325 +1,558 @@
 <!DOCTYPE html>
-<html lang="en-US">
+<html lang="en">
 <head>
-	<meta charset="UTF-8">
-	<title>College Landing &#8211; Unique Skill Academy</title>
-	<meta name='robots' content='max-image-preview:large' />
-	<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-	
-	<link rel='stylesheet' id='hello-elementor-css' href='https://slateblue-quetzal-288474.hostingersite.com/wp-content/themes/hello-elementor/assets/css/reset.css?ver=3.4.4' media='all' />
-	<link rel='stylesheet' id='hello-elementor-theme-style-css' href='https://slateblue-quetzal-288474.hostingersite.com/wp-content/themes/hello-elementor/assets/css/theme.css?ver=3.4.4' media='all' />
-	<link rel='stylesheet' id='elementor-frontend-css' href='https://slateblue-quetzal-288474.hostingersite.com/wp-content/plugins/elementor/assets/css/frontend.min.css?ver=3.33.3' media='all' />
-	<link rel='stylesheet' id='elementor-post-5275-css' href='https://slateblue-quetzal-288474.hostingersite.com/wp-content/uploads/elementor/css/post-5275.css?ver=1765984382' media='all' />
-	<link rel='stylesheet' id='font-awesome-5-all-css' href='https://slateblue-quetzal-288474.hostingersite.com/wp-content/plugins/elementor/assets/lib/font-awesome/css/all.min.css?ver=1.0' media='all' />
-	<link rel='stylesheet' id='swiper-css' href='https://slateblue-quetzal-288474.hostingersite.com/wp-content/plugins/qi-addons-for-elementor/assets/plugins/swiper/8.4.5/swiper.min.css?ver=8.4.5' media='all' />
-
-	<style>
-		body { margin: 0; font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; }
-		.elementor-section { position: relative; }
-		img { max-width: 100%; height: auto; }
-		.elementor-widget-image img { vertical-align: middle; display: inline-block; }
-		/* Fix for Marquee */
-		.qodef-m-content { display: flex; gap: 20px; overflow: hidden; white-space: nowrap; }
-		
-		/* Custom Background Image Class for "Our Journey" */
-		.custom-bg-journey {
-			background-image: url('images/bgimg.jpeg') !important;
-			background-size: cover;
-			background-position: center;
-			background-repeat: no-repeat;
-		}
-	</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unique Skill Academy</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* CSS reset and variables */
+        :root {
+            --primary-orange: #F35C00;
+            --text-dark: #333;
+            --text-light: #666;
+            --bg-light: #f9f9f9;
+        }
+        body { margin: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; box-sizing: border-box; }
+        *, *:before, *:after { box-sizing: inherit; }
+        
+        /* Layout Helpers */
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 15px; }
+        .text-orange { color: var(--primary-orange); }
+        .btn { background: var(--primary-orange); color: white; padding: 12px 25px; border: none; border-radius: 5px; cursor: pointer; font-weight: bold; text-decoration: none; display: inline-block; transition: background 0.3s; }
+        .btn:hover { background: #d94e00; }
+        
+        /* 1. Marquee Section */
+        .marquee-bar { background: var(--primary-orange); color: white; padding: 10px 0; overflow: hidden; white-space: nowrap; font-size: 14px; font-weight: 500; }
+        .marquee-content { display: inline-block; animation: marquee 25s linear infinite; }
+        @keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+        
+        /* 2. Header Section */
+        header { padding: 10px 0; background: white; box-shadow: 0 2px 10px rgba(0,0,0,0.05); position: sticky; top: 0; z-index: 100; }
+        .header-inner { display: flex; justify-content: space-between; align-items: center; }
+        .logo-section { display: flex; align-items: center; gap: 15px; }
+        .logo-img { height: 70px; width: auto; border-radius: 50%; }
+        .contact-info { text-align: right; }
+        .address-text { font-size: 14px; color: var(--text-light); margin-bottom: 5px; }
+        .phone-text { font-weight: bold; font-size: 14px; color: #333; }
+        .social-icons a { margin-left: 10px; color: #333; font-size: 18px; text-decoration: none; }
+        .social-icons .fa-map-marker-alt { color: var(--primary-orange); }
+        
+        /* 3. Hero Section */
+        .hero { position: relative; padding: 80px 0; color: white; min-height: 600px; display: flex; align-items: center; overflow: hidden; }
+        .hero-bg { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; }
+        .hero-bg img { width: 100%; height: 100%; object-fit: cover; position: absolute; opacity: 0; animation: slide 25s infinite; }
+        /* Simple CSS Slideshow for s1-s5 */
+        .hero-bg img:nth-child(1) { animation-delay: 0s; }
+        .hero-bg img:nth-child(2) { animation-delay: 5s; }
+        .hero-bg img:nth-child(3) { animation-delay: 10s; }
+        .hero-bg img:nth-child(4) { animation-delay: 15s; }
+        .hero-bg img:nth-child(5) { animation-delay: 20s; }
+        @keyframes slide { 0% { opacity: 0; } 5% { opacity: 1; } 20% { opacity: 1; } 25% { opacity: 0; } 100% { opacity: 0; } }
+        .hero-overlay { position: absolute; top:0; left:0; width:100%; height:100%; background: rgba(0,0,0,0.6); z-index: 0; }
+        
+        .hero-content { position: relative; z-index: 1; display: flex; justify-content: space-between; align-items: flex-start; width: 100%; gap: 40px; flex-wrap: wrap; }
+        .hero-text { flex: 1; min-width: 300px; }
+        .hero-text h1 { font-size: 48px; line-height: 1.2; margin-bottom: 20px; font-weight: 800; }
+        .hero-text h1 span { color: var(--primary-orange); }
+        .hero-desc { font-size: 16px; line-height: 1.6; margin-bottom: 30px; max-width: 600px; }
+        .hero-list { list-style: none; padding: 0; }
+        .hero-list li { margin-bottom: 12px; font-size: 16px; display: flex; align-items: center; gap: 10px; font-weight: 500; }
+        .hero-list i { color: var(--primary-orange); font-size: 18px; }
+        
+        .enquire-form { background: white; padding: 30px; border-radius: 8px; width: 400px; color: #333; box-shadow: 0 10px 30px rgba(0,0,0,0.2); }
+        .enquire-form h2 { margin-top: 0; border-bottom: 2px solid #eee; padding-bottom: 15px; margin-bottom: 20px; font-size: 24px; }
+        .form-group { margin-bottom: 15px; }
+        .form-group label { display: block; margin-bottom: 5px; font-weight: 600; font-size: 13px; color: #555; }
+        .form-group input, .form-group select, .form-group textarea { width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 4px; font-family: inherit; font-size: 14px; background: #f9f9f9; }
+        .enquire-form button { width: 100%; font-size: 16px; margin-top: 10px; }
+        
+        /* 4. Features Section */
+        .features { padding: 80px 0; background: white; }
+        .section-title { text-align: center; font-size: 36px; font-weight: 800; margin-bottom: 60px; color: #222; }
+        .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 40px; }
+        .feature-item { padding: 10px; transition: transform 0.3s; }
+        .feature-item:hover { transform: translateY(-5px); }
+        .feature-icon { font-size: 40px; color: var(--primary-orange); margin-bottom: 20px; display: block; }
+        .feature-item h3 { margin: 10px 0; font-size: 20px; color: #222; }
+        .feature-item p { color: #666; line-height: 1.6; font-size: 14px; }
+        
+        /* 5. Featured Courses Section */
+        .courses { padding: 80px 0; background: #fff; }
+        .courses-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+        .course-card { background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 5px 20px rgba(0,0,0,0.08); transition: transform 0.3s; border: 1px solid #eee; }
+        .course-card:hover { transform: translateY(-10px); }
+        .course-img-wrapper { position: relative; height: 220px; overflow: hidden; }
+        .course-img-wrapper img { width: 100%; height: 100%; object-fit: cover; }
+        .course-icon-overlay { position: absolute; bottom: -20px; right: 20px; width: 50px; height: 50px; background: var(--primary-orange); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 20px; border: 4px solid white; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+        .course-content { padding: 35px 25px 25px; }
+        .course-content h3 { color: var(--primary-orange); margin: 0 0 10px; font-size: 20px; }
+        .course-content p { color: #666; font-size: 14px; line-height: 1.6; margin: 0; }
+        
+        /* 6. Skills Section (Black BG) */
+        .skills-section { background: #1a1a1a; padding: 100px 0; color: white; }
+        .skills-layout { display: flex; gap: 60px; align-items: center; flex-wrap: wrap; }
+        .skills-text { flex: 1; min-width: 300px; }
+        .tag-pill { background: var(--primary-orange); padding: 5px 12px; border-radius: 4px; font-size: 11px; font-weight: bold; text-transform: uppercase; letter-spacing: 1px; display: inline-block; margin-bottom: 20px; }
+        .skills-text h2 { font-size: 42px; margin: 0 0 20px; line-height: 1.2; }
+        .skills-text p { margin-bottom: 30px; font-size: 16px; color: #ccc; line-height: 1.6; }
+        .skills-grid { flex: 1; display: grid; grid-template-columns: 1fr 1fr; gap: 20px; min-width: 300px; }
+        .skill-box { padding: 30px; border-radius: 8px; display: flex; flex-direction: column; align-items: flex-start; text-align: left; gap: 15px; }
+        .skill-box.orange { background: #ffaa71; color: #333; }
+        .skill-box.white { background: white; color: #333; }
+        .skill-box i { font-size: 24px; color: var(--primary-orange); }
+        .skill-box.orange i { color: #333; } /* Icon color for orange box */
+        .skill-box h4 { margin: 0; font-size: 18px; }
+        .skill-box p { margin: 0; font-size: 13px; opacity: 0.8; line-height: 1.5; color: inherit; }
+        
+        /* 7. Degree Planning Section (Rocket) */
+        .degree-planning { padding: 100px 0; background: #FFF5F0; }
+        .planning-layout { display: flex; gap: 60px; align-items: flex-start; flex-wrap: wrap; }
+        .planning-cards { flex: 1.2; display: grid; grid-template-columns: 1fr 1fr; gap: 20px; min-width: 300px; }
+        .plan-card { background: white; padding: 30px; border-radius: 12px; box-shadow: 0 5px 15px rgba(0,0,0,0.03); display: flex; flex-direction: column; align-items: flex-start; }
+        .plan-icon { width: 45px; height: 45px; background: var(--primary-orange); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; margin-bottom: 15px; font-size: 18px; }
+        .plan-card h4 { margin: 0 0 10px; font-size: 18px; color: #222; }
+        .plan-card p { font-size: 13px; color: #666; line-height: 1.6; margin: 0; }
+        
+        /* Rocket Card specific style */
+        .plan-card.highlight { background: var(--primary-orange); color: white; align-items: center; text-align: center; justify-content: center; grid-row: span 2; } /* Make it taller if grid allows, or just distinctive */
+        .rocket-img { width: 100px; margin-bottom: 20px; transform: rotate(-10deg); }
+        .plan-card.highlight h4 { color: white; font-size: 22px; margin-bottom: 20px; }
+        .whatsapp-btn { background: white; color: #333; padding: 12px 25px; border-radius: 30px; text-decoration: none; font-size: 14px; font-weight: bold; transition: transform 0.3s; }
+        .whatsapp-btn:hover { transform: scale(1.05); }
+        
+        .planning-text { flex: 0.8; padding-top: 20px; min-width: 300px; }
+        .counsel-tag { background: #ff5e62; color: white; padding: 6px 15px; border-radius: 20px; font-size: 12px; font-weight: bold; display: inline-block; margin-bottom: 20px; }
+        .planning-text h2 { font-size: 40px; margin: 0 0 20px; line-height: 1.2; color: #222; }
+        
+        /* 8. Journey Section (Parallax) */
+        .journey { position: relative; padding: 120px 0 180px; background-attachment: fixed; background-size: cover; background-position: center; color: white; text-align: center; }
+        .journey-overlay { position: absolute; top:0; left:0; width:100%; height:100%; background: rgba(0,0,0,0.75); z-index: 1; }
+        .journey-content { position: relative; z-index: 2; max-width: 800px; margin: 0 auto; }
+        .journey h2 { font-size: 48px; margin: 20px 0; font-weight: 800; }
+        
+        /* Stats Bar overlap */
+        .stats-bar-container { position: relative; z-index: 3; margin-top: -80px; padding: 0 15px; }
+        .stats-bar { background: #5a2a0c; color: white; border-radius: 0; padding: 40px; display: flex; justify-content: space-around; max-width: 1100px; margin: 0 auto; flex-wrap: wrap; gap: 20px; border-bottom: 4px solid var(--primary-orange); }
+        .stat-item { text-align: center; min-width: 150px; }
+        .stat-num { font-size: 42px; font-weight: bold; color: var(--primary-orange); margin-bottom: 5px; }
+        .stat-desc { font-size: 13px; text-transform: uppercase; letter-spacing: 1px; }
+        
+        /* 9. Testimonials */
+        .testimonials { padding: 100px 0; text-align: center; background: white; }
+        .trustpilot-img { height: 25px; margin: 20px 0 40px; }
+        .testi-grid { display: flex; gap: 30px; justify-content: center; flex-wrap: wrap; }
+        .testi-card { background: white; border: 1px solid #eee; padding: 30px; border-radius: 12px; width: 450px; text-align: left; box-shadow: 0 5px 15px rgba(0,0,0,0.03); }
+        .quote-icon { font-size: 30px; color: #ccc; margin-bottom: 10px; display: block; text-align: right; }
+        .testi-text { font-style: italic; color: #555; margin-bottom: 25px; line-height: 1.6; font-size: 15px; }
+        .testi-footer { display: flex; align-items: center; gap: 15px; border-top: 1px solid #f0f0f0; padding-top: 15px; justify-content: space-between; }
+        .user-info { display: flex; align-items: center; gap: 15px; }
+        .user-img { width: 50px; height: 50px; border-radius: 50%; object-fit: cover; }
+        .stars { color: #FFB800; font-size: 14px; }
+        
+        /* 10. CTA Bar */
+        .cta-section { padding: 40px 15px; background: white; }
+        .cta-box { background: white; border-radius: 50px; border: 1px solid #eee; box-shadow: 0 10px 40px rgba(0,0,0,0.08); padding: 10px; display: flex; justify-content: space-between; align-items: center; max-width: 1000px; margin: 0 auto; overflow: hidden; position: relative; min-height: 120px; }
+        .cta-left { padding-left: 40px; z-index: 2; }
+        .cta-left h3 { margin: 0; font-size: 32px; font-weight: 800; color: #222; }
+        .cta-left span { color: var(--primary-orange); }
+        .cta-right-bg { background: #333; color: white; padding: 30px 60px 30px 80px; border-radius: 50px; margin: -10px -10px -10px 0; display: flex; flex-direction: column; justify-content: center; position: relative; clip-path: polygon(15% 0, 100% 0, 100% 100%, 0% 100%); width: 50%; text-align: left; }
+        .cta-right-bg p { margin: 0 0 15px; font-size: 14px; line-height: 1.4; opacity: 0.9; }
+        
+        /* 11. Footer */
+        footer { background: #111; color: white; padding: 60px 0; font-size: 14px; }
+        .footer-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; align-items: start; }
+        .footer-logo h2 { color: var(--primary-orange); margin-top: 0; font-size: 36px; line-height: 1; }
+        .footer-links i { width: 25px; color: var(--primary-orange); text-align: center; margin-right: 10px; }
+        .footer-links li { margin-bottom: 12px; display: flex; align-items: flex-start; }
+        
+        /* Responsive Tweaks */
+        @media (max-width: 768px) {
+            .hero-content { flex-direction: column; }
+            .enquire-form { width: 100%; }
+            .courses-grid { grid-template-columns: 1fr; }
+            .skills-layout, .planning-layout { flex-direction: column; }
+            .stats-bar { flex-direction: column; gap: 30px; }
+            .cta-box { flex-direction: column; border-radius: 20px; text-align: center; padding: 30px; }
+            .cta-right-bg { width: 100%; clip-path: none; margin: 20px 0 0; border-radius: 10px; padding: 20px; text-align: center; }
+            .footer-grid { grid-template-columns: 1fr; }
+        }
+    </style>
 </head>
+<body>
 
-<body class="wp-singular page-template page-template-elementor_canvas page page-id-5275 elementor-default elementor-template-canvas elementor-kit-7 elementor-page elementor-page-5275">
-	
-	<div data-elementor-type="wp-page" data-elementor-id="5275" class="elementor elementor-5275">
-		
-		<div class="elementor-element elementor-element-8aba950 e-con-full e-flex e-con e-parent">
-			<div class="elementor-element elementor-element-d6dccec elementor-widget elementor-widget-qi_addons_for_elementor_text_marquee">
-				<div class="elementor-widget-container">
-					<div class="qodef-shortcode qodef-m qodef-qi-text-marquee">
-						<div class="qodef-m-content" style="background: #F35C00; color: white; padding: 10px 0;">
-							<span style="padding: 0 15px;">Govt Recognized Courses <i class="fas fa-star"></i></span>
-							<span style="padding: 0 15px;">BOSCH CSR Training <i class="fas fa-star"></i></span>
-							<span style="padding: 0 15px;">Job-Focused Computer Skills <i class="fas fa-star"></i></span>
-							<span style="padding: 0 15px;">Career Counselling Available <i class="fas fa-star"></i></span>
-							<span style="padding: 0 15px;">Affordable & Practical Learning <i class="fas fa-star"></i></span>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
+    <div class="marquee-bar">
+        <div class="marquee-content">
+            <i class="fas fa-star"></i> Govt Recognized Courses &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <i class="fas fa-star"></i> BOSCH CSR Training &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <i class="fas fa-star"></i> Job-Focused Computer Skills &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <i class="fas fa-star"></i> Career Counselling Available &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <i class="fas fa-star"></i> Affordable & Practical Learning &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <i class="fas fa-star"></i> Govt Recognized Courses &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <i class="fas fa-star"></i> BOSCH CSR Training &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <i class="fas fa-star"></i> Job-Focused Computer Skills &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        </div>
+    </div>
 
-		<div class="elementor-element elementor-element-49b99df e-flex e-con-boxed e-con e-parent" style="padding: 20px 0;">
-			<div class="e-con-inner" style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap;">
-				<div class="elementor-element elementor-element-3d8c471 e-con-full e-flex e-con e-child" style="flex: 1; min-width: 200px;">
-					<div class="elementor-element elementor-element-c26f024 elementor-widget elementor-widget-image">
-						<div class="elementor-widget-container">
-							<img width="465" height="465" src="images/logo.jpeg" class="attachment-full size-full" alt="Unique Skill Academy Logo" />
-						</div>
-					</div>
-				</div>
-				<div class="elementor-element elementor-element-cf15de9 e-con-full e-flex e-con e-child" style="flex: 2; padding-left: 20px;">
-					<div class="elementor-widget-heading">
-						<h2 class="elementor-heading-title" style="color: #F35C00; margin: 0;">Unique Skill Academy</h2>
-						<p style="margin: 5px 0;">68, MLA Colony, Jawahar Chowk, Bhopal (M.P.)</p>
-					</div>
-					<div class="elementor-widget-icon-list">
-						<ul class="elementor-icon-list-items elementor-inline-items" style="list-style: none; padding: 0; display: flex; gap: 15px;">
-							<li><a href="tel:+917389203337" style="color: #333; text-decoration: none;"><i class="fas fa-phone-alt"></i> +91 73892 03337</a></li>
-							<li><a href="tel:+917000939803" style="color: #333; text-decoration: none;"><i class="fas fa-phone-alt"></i> +91 70009 39803</a></li>
-						</ul>
-					</div>
-				</div>
-				<div class="elementor-element elementor-element-6df8385 e-con-full e-flex e-con e-child" style="flex: 1; text-align: right;">
-					<div class="elementor-widget-social-icons">
-						<a href="https://www.facebook.com/USA4MCU" target="_blank" style="margin: 0 5px; color: #3b5998;"><i class="fab fa-facebook fa-2x"></i></a>
-						<a href="https://www.instagram.com/unique_skils_academy" target="_blank" style="margin: 0 5px; color: #C13584;"><i class="fab fa-instagram fa-2x"></i></a>
-						<a href="https://share.google/zClfvaCdGJi0WB9y9" target="_blank" style="margin: 0 5px; color: #DB4437;"><i class="fas fa-map-marker-alt fa-2x"></i></a>
-					</div>
-				</div>
-			</div>
-		</div>
+    <header>
+        <div class="container header-inner">
+            <div class="logo-section">
+                <img src="images/logo.jpeg" alt="Unique Skill Academy Logo" class="logo-img">
+                <div>
+                    <h2 style="margin:0; font-size: 24px; color: var(--primary-orange); font-weight: 800;">Unique Skill Academy</h2>
+                    <div class="address-text">68, MLA Colony, Jawahar Chowk, Bhopal (M.P.)</div>
+                </div>
+            </div>
+            <div class="contact-info">
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fas fa-map-marker-alt"></i></a>
+                </div>
+                <div class="phone-text" style="margin-top: 5px;">
+                    +91 73892 03337 &nbsp; <span style="color:#ddd">|</span> &nbsp; +91 70009 39803
+                </div>
+            </div>
+        </div>
+    </header>
 
-		<div class="elementor-element elementor-element-6471ae3 e-flex e-con-boxed e-con e-parent" 
-             data-settings="{&quot;background_background&quot;:&quot;slideshow&quot;,&quot;background_slideshow_gallery&quot;:[{&quot;id&quot;:1,&quot;url&quot;:&quot;images/s1.jpeg&quot;},{&quot;id&quot;:2,&quot;url&quot;:&quot;images/s2.jpeg&quot;},{&quot;id&quot;:3,&quot;url&quot;:&quot;images/s3.jpeg&quot;},{&quot;id&quot;:4,&quot;url&quot;:&quot;images/s4.jpeg&quot;},{&quot;id&quot;:5,&quot;url&quot;:&quot;images/s5.jpeg&quot;}],&quot;background_slideshow_loop&quot;:&quot;yes&quot;,&quot;background_slideshow_slide_duration&quot;:5000,&quot;background_slideshow_slide_transition&quot;:&quot;fade&quot;,&quot;background_slideshow_transition_duration&quot;:500}"
-             style="padding: 100px 20px; color: white; position: relative;">
-             <div style="position: absolute; top:0; left:0; width:100%; height:100%; z-index: -1; background: url('images/s1.jpeg') center/cover no-repeat; opacity: 0.5;"></div>
-             
-			<div class="e-con-inner" style="background: rgba(0,0,0,0.6); padding: 40px; border-radius: 10px;">
-				<div class="elementor-element elementor-element-839cf8b e-con-full e-flex e-con e-child">
-					<h2 class="elementor-heading-title" style="color: #fff; font-size: 2.5em;">Start Your Skill Journey Today.</h2>
-					<h2 class="elementor-heading-title" style="color: #F35C00; font-size: 2em;">That Builds Real Skills And Gets You Ready For Real Careers.</h2>
-					<p style="color: #ddd; font-size: 1.2em;">Get certified in PGDCA, DCA, and BOSCH training. Join our practical courses and start your journey in IT, analytics, and office skills.</p>
-					
-					<ul class="elementor-icon-list-items" style="list-style: none; padding: 0; margin-top: 20px;">
-						<li style="margin-bottom: 10px;"><i class="fas fa-arrow-circle-right" style="color: #F35C00;"></i> PGDCA (Govt Authorized Computer Diploma)</li>
-						<li style="margin-bottom: 10px;"><i class="fas fa-arrow-circle-right" style="color: #F35C00;"></i> DCA (1 Year Job-Oriented Course)</li>
-						<li style="margin-bottom: 10px;"><i class="fas fa-arrow-circle-right" style="color: #F35C00;"></i> BOSCH CSR Skill Programs</li>
-						<li style="margin-bottom: 10px;"><i class="fas fa-arrow-circle-right" style="color: #F35C00;"></i> Analytics, Power BI, Office Package</li>
-					</ul>
-				</div>
-				
-				<div class="elementor-element elementor-element-8fe3967 e-con-full e-flex e-con e-child" style="background: white; padding: 30px; border-radius: 8px; margin-top: 30px; color: #333;">
-					<h2 class="elementor-heading-title">Enquire Now</h2>
-					<form class="elementor-form" method="post">
-						<input type="text" placeholder="Name" style="width: 100%; padding: 10px; margin-bottom: 10px;">
-						<input type="text" placeholder="Mobile" style="width: 100%; padding: 10px; margin-bottom: 10px;">
-						<select style="width: 100%; padding: 10px; margin-bottom: 10px;">
-							<option>Select Course</option>
-							<option>PGDCA</option>
-							<option>DCA</option>
-							<option>BOSCH Training</option>
-						</select>
-						<button type="submit" style="background: #F35C00; color: white; border: none; padding: 10px 20px; cursor: pointer;">Send</button>
-					</form>
-				</div>
-			</div>
-		</div>
+    <section class="hero">
+        <div class="hero-bg">
+            <img src="images/s1.jpeg" alt="Slide 1">
+            <img src="images/s2.jpeg" alt="Slide 2">
+            <img src="images/s3.jpeg" alt="Slide 3">
+            <img src="images/s4.jpeg" alt="Slide 4">
+            <img src="images/s5.jpeg" alt="Slide 5">
+        </div>
+        <div class="hero-overlay"></div>
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1>Start Your Skill<br>Journey Today.<br><span>That Builds Real Skills And Gets You Ready For Real Careers.</span></h1>
+                    <p class="hero-desc">Get certified in PGDCA, DCA, and BOSCH training. Join our practical courses and start your journey in IT, analytics, and office skills. Build your future with confidence and clarity.</p>
+                    <ul class="hero-list">
+                        <li><i class="fas fa-arrow-circle-right"></i> PGDCA (Govt Authorized Computer Diploma)</li>
+                        <li><i class="fas fa-arrow-circle-right"></i> DCA (1 Year Job-Oriented Course)</li>
+                        <li><i class="fas fa-arrow-circle-right"></i> BOSCH CSR Skill Programs</li>
+                        <li><i class="fas fa-arrow-circle-right"></i> CPCT, Typing, Excel, Tally with GST</li>
+                        <li><i class="fas fa-arrow-circle-right"></i> Analytics, Power BI, Office Package</li>
+                        <li><i class="fas fa-arrow-circle-right"></i> BA / BCom / BLib Counselling Support</li>
+                    </ul>
+                </div>
+                
+                <div class="enquire-form">
+                    <h2>Enquire Now</h2>
+                    <form>
+                        <div class="form-group">
+                            <label>Name *</label>
+                            <input type="text" placeholder="Your Name">
+                        </div>
+                        <div class="form-group">
+                            <label>Mobile *</label>
+                            <input type="text" placeholder="+91-">
+                        </div>
+                        <div class="form-group">
+                            <label>School Name *</label>
+                            <input type="text" placeholder="Enter School Name">
+                        </div>
+                        <div class="form-group">
+                            <label>Currently Studying In Class</label>
+                            <select><option>Select Class</option><option>10th</option><option>12th</option><option>Graduate</option></select>
+                        </div>
+                        <div class="form-group">
+                            <label>What are you Enquiring for?</label>
+                            <select><option>Select Class</option><option>PGDCA</option><option>DCA</option><option>Tally</option></select>
+                        </div>
+                        <div class="form-group">
+                            <label>Your Address</label>
+                            <textarea rows="2"></textarea>
+                        </div>
+                        <button type="button" class="btn">Send</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
 
-		<div class="elementor-element elementor-element-a8021d2 e-flex e-con-boxed e-con e-parent" style="padding: 60px 20px; text-align: center;">
-			<h2 class="elementor-heading-title">Why Choose <font color="#F35C00">Unique Skill Academy?</font></h2>
-			<div style="display: flex; justify-content: space-around; flex-wrap: wrap; margin-top: 40px;">
-				<div style="flex: 1; min-width: 250px; margin: 10px;">
-					<i class="fas fa-book-open fa-3x" style="color: #F35C00;"></i>
-					<h3>Certified Courses</h3>
-					<p>Government-recognized PGDCA and DCA programs.</p>
-				</div>
-				<div style="flex: 1; min-width: 250px; margin: 10px;">
-					<i class="fas fa-briefcase fa-3x" style="color: #F35C00;"></i>
-					<h3>BOSCH Training</h3>
-					<p>Corporate skills in Bridge, Auto, and Healthcare.</p>
-				</div>
-				<div style="flex: 1; min-width: 250px; margin: 10px;">
-					<i class="fas fa-chart-bar fa-3x" style="color: #F35C00;"></i>
-					<h3>Practical Skills</h3>
-					<p>Training in Excel, Tally, and Analytics.</p>
-				</div>
-			</div>
-		</div>
+    <section class="features">
+        <div class="container">
+            <h2 class="section-title">Why Choose <span class="text-orange">Unique Skill Academy?</span></h2>
+            <p style="text-align: center; margin-top: -40px; margin-bottom: 50px; color: #666;">Explore what sets us apart — practical learning, certified programs, and job-ready skills you can rely on for your future.</p>
+            
+            <div class="features-grid">
+                <div class="feature-item">
+                    <i class="fas fa-book-open feature-icon"></i>
+                    <h3>Certified Courses</h3>
+                    <p>Government-recognized PGDCA and DCA programs designed for professional careers and secure documentation.</p>
+                </div>
+                <div class="feature-item">
+                    <i class="fas fa-briefcase feature-icon"></i>
+                    <h3>BOSCH Training</h3>
+                    <p>Corporate skills in Bridge, Auto, and Healthcare with hands-on, job-focused practical learning for real industries.</p>
+                </div>
+                <div class="feature-item">
+                    <i class="fas fa-chart-bar feature-icon"></i>
+                    <h3>Practical Skills</h3>
+                    <p>Training in Excel, Tally, Office, and Analytics ensures job readiness in real-world office and IT roles.</p>
+                </div>
+                <div class="feature-item">
+                    <i class="far fa-clock feature-icon"></i>
+                    <h3>Flexible Timings</h3>
+                    <p>Morning, evening, and weekend batches suited for students, homemakers, and working professionals with ease.</p>
+                </div>
+                <div class="feature-item">
+                    <i class="fas fa-bullseye feature-icon"></i>
+                    <h3>Career Guidance</h3>
+                    <p>Support for BA, BCom, MA, MBA and more through structured private and regular counselling services.</p>
+                </div>
+                <div class="feature-item">
+                    <i class="far fa-comments feature-icon"></i>
+                    <h3>Student Support</h3>
+                    <p>Full-time doubt-solving, class review, and clear communication ensures smooth learning without confusion.</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-		<div class="elementor-element elementor-element-f3d1264 e-flex e-con-boxed e-con e-parent" style="background: #f9f9f9; padding: 60px 20px;">
-			<div class="e-con-inner">
-				<div class="elementor-widget-heading" style="text-align: center; margin-bottom: 40px;">
-					<h2 class="elementor-heading-title">Our Featured <font color="#F35C00">Courses</font></h2>
-				</div>
-				
-				<div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 30px;">
-					<div style="width: 300px; text-align: center;">
-						<img src="images/c1.jpeg" width="300" height="300" alt="PGDCA">
-						<h3>PGDCA Diploma</h3>
-						<p>One-year government recognized diploma.</p>
-					</div>
+    <section class="courses">
+        <div class="container">
+            <h2 class="section-title">Our Featured <span class="text-orange">Courses</span></h2>
+            <div class="courses-grid">
+                <div class="course-card">
+                    <div class="course-img-wrapper">
+                        <img src="images/c1.jpeg" alt="PGDCA">
+                        <div class="course-icon-overlay"><i class="fas fa-book"></i></div>
+                    </div>
+                    <div class="course-content">
+                        <h3>PGDCA Diploma</h3>
+                        <p>One-year government recognized diploma in computer applications for official work, IT careers, or advanced study.</p>
+                    </div>
+                </div>
+                <div class="course-card">
+                    <div class="course-img-wrapper">
+                        <img src="images/c2.png" alt="DCA">
+                        <div class="course-icon-overlay"><i class="fas fa-certificate"></i></div>
+                    </div>
+                    <div class="course-content">
+                        <h3>DCA Certificate</h3>
+                        <p>Entry-level certified computer course for beginners covering MS Office, basics, internet and job applications.</p>
+                    </div>
+                </div>
+                <div class="course-card">
+                    <div class="course-img-wrapper">
+                        <img src="images/c3.jpeg" alt="BOSCH">
+                        <div class="course-icon-overlay"><i class="fas fa-tools"></i></div>
+                    </div>
+                    <div class="course-content">
+                        <h3>BOSCH CSR Training</h3>
+                        <p>Corporate skill-based training in healthcare, bridge sector and automobile industry with completion certificate support.</p>
+                    </div>
+                </div>
+                <div class="course-card">
+                    <div class="course-img-wrapper">
+                        <img src="images/c4.jpeg" alt="Excel">
+                        <div class="course-icon-overlay"><i class="fas fa-chart-line"></i></div>
+                    </div>
+                    <div class="course-content">
+                        <h3>Excel & Tally</h3>
+                        <p>Basic to advanced Microsoft Excel with GST-enabled Tally ERP accounting course for finance and office use.</p>
+                    </div>
+                </div>
+                <div class="course-card">
+                    <div class="course-img-wrapper">
+                        <img src="images/c5.png" alt="Power BI">
+                        <div class="course-icon-overlay"><i class="fas fa-chart-pie"></i></div>
+                    </div>
+                    <div class="course-content">
+                        <h3>Power BI & Analytics</h3>
+                        <p>Business Intelligence and data tools to analyze, report, and visualize business or financial performance professionally.</p>
+                    </div>
+                </div>
+                <div class="course-card">
+                    <div class="course-img-wrapper">
+                        <img src="images/c6.jpeg" alt="Degree">
+                        <div class="course-icon-overlay"><i class="fas fa-graduation-cap"></i></div>
+                    </div>
+                    <div class="course-content">
+                        <h3>Private Degree Guidance</h3>
+                        <p>Academic support for BA, BCom, MA, MBA, BLib, MLib via regular or private format with full form help.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-					<div style="width: 300px; text-align: center;">
-						<img src="images/c2.png" width="300" height="300" alt="DCA">
-						<h3>DCA Certificate</h3>
-						<p>Entry-level certified computer course.</p>
-					</div>
+    <section class="skills-section">
+        <div class="container skills-layout">
+            <div class="skills-text">
+                <span class="tag-pill">Let's Build Skills</span>
+                <h2>Want Real-World Skills? Let's Learn Them Practically.</h2>
+                <p>You get more than theory. Our short-term programs are hands-on, career-ready, and focused on tools that get you job opportunities and real results.</p>
+                <a href="#" class="btn">Talk to Our Counsellor</a>
+            </div>
+            <div class="skills-grid">
+                <div class="skill-box orange">
+                    <i class="far fa-keyboard"></i>
+                    <h4>Typing (Hin + Eng)</h4>
+                    <p>Build typing fluency in both languages with speed practice and official exam preparation for job profiles.</p>
+                </div>
+                <div class="skill-box white">
+                    <i class="fas fa-file-invoice-dollar"></i>
+                    <h4>Tally + GST Course</h4>
+                    <p>Get trained in Tally software and GST billing through hands-on modules.</p>
+                </div>
+                <div class="skill-box white">
+                    <i class="fas fa-table"></i>
+                    <h4>Advanced Excel Tools</h4>
+                    <p>Master formulas, dashboards, and formatting for business use in office operations.</p>
+                </div>
+                <div class="skill-box white">
+                    <i class="fas fa-chart-pie"></i>
+                    <h4>Power BI + Analytics</h4>
+                    <p>Learn to visualize and report data for business growth using real-time Power BI project-based guidance.</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-					<div style="width: 300px; text-align: center;">
-						<img src="images/c3.jpeg" width="300" height="300" alt="BOSCH Training">
-						<h3>BOSCH CSR Training</h3>
-						<p>Corporate skill-based training in healthcare.</p>
-					</div>
+    <section class="degree-planning">
+        <div class="container planning-layout">
+            <div class="planning-cards">
+                <div class="plan-card">
+                    <div class="plan-icon"><i class="fas fa-university"></i></div>
+                    <h4>Regular Degree Help</h4>
+                    <p>Guidance for regular university enrollment in BA, BCom, BSc, MA, MCom, and other degree programs.</p>
+                </div>
+                <div class="plan-card">
+                    <div class="plan-icon"><i class="far fa-comments"></i></div>
+                    <h4>Private Exam Support</h4>
+                    <p>Assistance with private form fill-ups, subject selection, study tracking and last-minute academic support.</p>
+                </div>
+                <div class="plan-card">
+                    <div class="plan-icon"><i class="fas fa-book-open"></i></div>
+                    <h4>Diploma & Certification</h4>
+                    <p>Help with various computer, library science and management diploma or short-term certification courses.</p>
+                </div>
+                <div class="plan-card highlight">
+                    <img src="images/bgimg2.png" alt="Rocket" class="rocket-img">
+                    <h4>Let's Plan Your Degree!</h4>
+                    <a href="#" class="whatsapp-btn"><i class="fab fa-whatsapp"></i> Connect on WhatsApp</a>
+                </div>
+            </div>
+            <div class="planning-text">
+                <span class="counsel-tag">Counselling Support</span>
+                <h2>Academic Counselling For Regular & Private Students.</h2>
+                <p>We provide expert counselling for degree admissions in BA, BCom, BLib, MA, MBA and more. Whether regular or private mode, we guide you in exam forms, study materials, and scheduling help.</p>
+            </div>
+        </div>
+    </section>
 
-					<div style="width: 300px; text-align: center;">
-						<img src="images/c4.jpeg" width="300" height="300" alt="Excel Tally">
-						<h3>Excel & Tally</h3>
-						<p>Advanced Microsoft Excel with GST-enabled Tally.</p>
-					</div>
+    <section class="journey" style="background-image: url('images/bgimg.jpeg');">
+        <div class="journey-overlay"></div>
+        <div class="container journey-content">
+            <span style="background: #ff5e62; padding: 5px 15px; border-radius: 4px; font-size: 12px; font-weight: bold; margin-bottom: 20px; display: inline-block;">Know About Us</span>
+            <h2>Our Journey in Skill<br>Education & Training</h2>
+            <p style="font-size: 16px; margin-bottom: 30px; line-height: 1.6;">We've helped thousands of learners grow with practical training. From computer diplomas to BOSCH skills, our programs bring real results, job-readiness, and flexible support—no matter your background.</p>
+            <a href="#" class="btn">Talk to Our Counsellor</a>
+        </div>
+    </section>
+    
+    <div class="container stats-bar-container">
+        <div class="stats-bar">
+            <div class="stat-item">
+                <div class="stat-num">1,200 +</div>
+                <div class="stat-desc">Students Trained Successfully</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-num">20 +</div>
+                <div class="stat-desc">Certified Courses Offered</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-num">6 +</div>
+                <div class="stat-desc">Skill Tracks & Specializations</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-num">10 +</div>
+                <div class="stat-desc">Years of Training Experience</div>
+            </div>
+        </div>
+    </div>
 
-					<div style="width: 300px; text-align: center;">
-						<img src="images/c5.png" width="300" height="300" alt="Power BI">
-						<h3>Power BI & Analytics</h3>
-						<p>Business Intelligence and data tools.</p>
-					</div>
+    <section class="testimonials">
+        <div class="container">
+            <h2 style="font-size: 32px; font-weight: 800; margin-bottom: 10px;">Trusted by Students Across Bhopal</h2>
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b5/Trustpilot_logo.svg/1200px-Trustpilot_logo.svg.png" alt="Trustpilot" class="trustpilot-img">
+            
+            <div class="testi-grid">
+                <div class="testi-card">
+                    <p class="testi-text">"Joined CPCT and typing classes. Loved the batch flexibility and clarity in teaching. Practiced regularly and cleared my exam. This institute truly prepares students for government exam readiness."</p>
+                    <div class="quote-icon"><i class="fas fa-quote-right"></i></div>
+                    <div class="testi-footer">
+                        <div class="user-info">
+                            <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="George" class="user-img">
+                            <div>
+                                <h4 style="margin: 0; font-size: 16px;">George Panagios</h4>
+                                <span style="font-size: 12px; color: #888;">Student</span>
+                            </div>
+                        </div>
+                        <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                    </div>
+                </div>
+                
+                <div class="testi-card">
+                    <p class="testi-text">"Thankful for the private exam guidance. They helped with BA admission, forms, study material and proper timelines. Very useful for working people like me. Everything was explained in detail."</p>
+                    <div class="quote-icon"><i class="fas fa-quote-right"></i></div>
+                    <div class="testi-footer">
+                        <div class="user-info">
+                             <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Komal" class="user-img">
+                            <div>
+                                <h4 style="margin: 0; font-size: 16px;">Komal Yadav</h4>
+                                <span style="font-size: 12px; color: #888;">Private BA Counselling</span>
+                            </div>
+                        </div>
+                        <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-					<div style="width: 300px; text-align: center;">
-						<img src="images/c6.jpeg" width="300" height="300" alt="Degree Guidance">
-						<h3>Private Degree Guidance</h3>
-						<p>Academic support for BA, BCom, MA, MBA.</p>
-					</div>
-				</div>
-			</div>
-		</div>
+    <div class="cta-section">
+        <div class="container cta-box">
+            <div class="cta-left">
+                <h3>Book a Counselling<br><span style="color: #F35C00;">Session Now!!</span></h3>
+            </div>
+            <div class="cta-right-bg">
+                <p>Get your free academic or career consultation and explore which course, skill, or degree path is best for your future—no cost, just clarity.</p>
+                <a href="#" class="btn" style="align-self: flex-start; font-size: 12px; padding: 10px 20px;">BOOK NOW!</a>
+            </div>
+        </div>
+    </div>
 
-		<div class="elementor-element elementor-element-be29b87 e-flex e-con-boxed e-con e-parent" style="padding: 60px 20px;">
-			<div class="e-con-inner" style="display: flex; flex-wrap: wrap; align-items: center;">
-				<div style="flex: 1; padding-right: 20px;">
-					<h2>Regular Degree Help</h2>
-					<p>Guidance for regular university enrollment in BA, BCom, BSc, MA, MCom.</p>
-					
-					<h2 style="margin-top: 30px;">Private Exam Support</h2>
-					<p>Assistance with private form fill-ups and study tracking.</p>
+    <footer>
+        <div class="container footer-grid">
+            <div class="footer-logo">
+                <h2>Unique Skill<br>Academy</h2>
+                <p style="font-size: 16px; margin: 20px 0; color: #ccc;">Empowering Careers Through Practical Learning.</p>
+                <p style="font-size: 13px; color: #888; line-height: 1.6; max-width: 400px;">We were founded to bridge the gap between traditional education and real-world job skills. From certified computer courses to BOSCH CSR training and private degree guidance, we prepare students for success.</p>
+                <div class="social-icons" style="margin-top: 20px;">
+                    <a href="#" style="color: white; margin-right: 15px;"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" style="color: white; margin-right: 15px;"><i class="fab fa-instagram"></i></a>
+                    <a href="#" style="color: white; margin-right: 15px;"><i class="fab fa-youtube"></i></a>
+                    <a href="#" style="color: white; margin-right: 15px;"><i class="fas fa-map-marker-alt"></i></a>
+                </div>
+            </div>
+            <div class="footer-links">
+                <h3 style="color: var(--primary-orange); margin-top: 0; font-size: 24px; margin-bottom: 30px;">Get In Touch</h3>
+                <ul style="list-style: none; padding: 0;">
+                    <li><i class="fas fa-map-marker-alt"></i> 68, New MLA Colony, Jawahar Chowk, Bhopal – 462003</li>
+                    <li><i class="fas fa-envelope"></i> usa4mcu@gmail.com</li>
+                    <li><i class="fas fa-phone-alt"></i> +91-73892 03337</li>
+                    <li><i class="fas fa-phone-alt"></i> +91 70009 39803</li>
+                </ul>
+            </div>
+        </div>
+    </footer>
 
-					<h2 style="margin-top: 30px;">Diploma & Certification</h2>
-					<p>Help with various computer and library science diplomas.</p>
-				</div>
-				<div style="flex: 1; text-align: center;">
-					<img src="images/bgimg2.png" alt="Degree Planning Rocket" style="max-width: 100%; border-radius: 10px;">
-					<div style="margin-top: 20px;">
-						<a href="#" class="elementor-button" style="background: #F35C00; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px;">Connect on WhatsApp</a>
-					</div>
-				</div>
-			</div>
-		</div>
-
-		<div class="elementor-element elementor-element-3135c26 e-flex e-con-boxed e-con e-parent custom-bg-journey" 
-             style="padding: 100px 20px; color: white; text-align: center; position: relative;">
-			<div style="background: rgba(0,0,0,0.5); display: inline-block; padding: 40px; border-radius: 10px;">
-				<h2 class="elementor-heading-title">Our Journey in Skill Education & Training</h2>
-				<p>We’ve helped thousands of learners grow with practical training. From computer diplomas to BOSCH skills, our programs bring real results.</p>
-			</div>
-			
-			<div style="display: flex; justify-content: center; gap: 40px; margin-top: 40px; flex-wrap: wrap;">
-				<div style="background: rgba(255,255,255,0.9); color: #333; padding: 20px; border-radius: 5px; min-width: 150px;">
-					<h3 style="color: #F35C00; font-size: 2em; margin: 0;">1,200+</h3>
-					<p>Students Trained</p>
-				</div>
-				<div style="background: rgba(255,255,255,0.9); color: #333; padding: 20px; border-radius: 5px; min-width: 150px;">
-					<h3 style="color: #F35C00; font-size: 2em; margin: 0;">20+</h3>
-					<p>Certified Courses</p>
-				</div>
-				<div style="background: rgba(255,255,255,0.9); color: #333; padding: 20px; border-radius: 5px; min-width: 150px;">
-					<h3 style="color: #F35C00; font-size: 2em; margin: 0;">10+</h3>
-					<p>Years Experience</p>
-				</div>
-			</div>
-		</div>
-
-		<div class="elementor-element elementor-element-9494919 e-flex e-con-boxed e-con e-parent" style="padding: 60px 20px; background: #fff;">
-			<div class="e-con-inner" style="text-align: center;">
-				<h2>Trusted by Students Across Bhopal</h2>
-				<img src="https://slateblue-quetzal-288474.hostingersite.com/wp-content/uploads/2025/06/trustpilot-png-09063ec150984b32a4d6-removebg-preview-300x194.png" alt="Trustpilot" style="width: 150px; margin: 20px auto;">
-				
-				<div style="display: flex; overflow-x: auto; gap: 20px; padding: 20px 0; justify-content: center;">
-					
-					<div style="min-width: 300px; background: #f4f4f4; padding: 20px; border-radius: 10px; text-align: left;">
-						<div style="display: flex; align-items: center; margin-bottom: 15px;">
-							<img src="https://randomuser.me/api/portraits/women/44.jpg" style="width: 50px; height: 50px; border-radius: 50%; margin-right: 15px;">
-							<div>
-								<h4 style="margin: 0;">Richa Soni</h4>
-								<span style="font-size: 0.9em; color: #666;">Student – PGDCA Batch</span>
-							</div>
-						</div>
-						<p>“Completed PGDCA from here. Teaching quality and staff support were excellent.”</p>
-					</div>
-
-					<div style="min-width: 300px; background: #f4f4f4; padding: 20px; border-radius: 10px; text-align: left;">
-						<div style="display: flex; align-items: center; margin-bottom: 15px;">
-							<img src="https://randomuser.me/api/portraits/men/32.jpg" style="width: 50px; height: 50px; border-radius: 50%; margin-right: 15px;">
-							<div>
-								<h4 style="margin: 0;">Nipun Agrawal</h4>
-								<span style="font-size: 0.9em; color: #666;">Student</span>
-							</div>
-						</div>
-						<p>“I joined for Tally and Excel. Trainers explained everything clearly and practically.”</p>
-					</div>
-
-					<div style="min-width: 300px; background: #f4f4f4; padding: 20px; border-radius: 10px; text-align: left;">
-						<div style="display: flex; align-items: center; margin-bottom: 15px;">
-							<img src="https://randomuser.me/api/portraits/women/68.jpg" style="width: 50px; height: 50px; border-radius: 50%; margin-right: 15px;">
-							<div>
-								<h4 style="margin: 0;">Neha Dubey</h4>
-								<span style="font-size: 0.9em; color: #666;">BOSCH Healthcare Program</span>
-							</div>
-						</div>
-						<p>“The training was hands-on and certification process was smooth.”</p>
-					</div>
-					
-                    <div style="min-width: 300px; background: #f4f4f4; padding: 20px; border-radius: 10px; text-align: left;">
-						<div style="display: flex; align-items: center; margin-bottom: 15px;">
-							<img src="https://randomuser.me/api/portraits/men/85.jpg" style="width: 50px; height: 50px; border-radius: 50%; margin-right: 15px;">
-							<div>
-								<h4 style="margin: 0;">George Panagios</h4>
-								<span style="font-size: 0.9em; color: #666;">Student</span>
-							</div>
-						</div>
-						<p>“Loved the batch flexibility and clarity in teaching.”</p>
-					</div>
-					
-					<div style="min-width: 300px; background: #f4f4f4; padding: 20px; border-radius: 10px; text-align: left;">
-						<div style="display: flex; align-items: center; margin-bottom: 15px;">
-							<img src="https://randomuser.me/api/portraits/women/12.jpg" style="width: 50px; height: 50px; border-radius: 50%; margin-right: 15px;">
-							<div>
-								<h4 style="margin: 0;">Komal Yadav</h4>
-								<span style="font-size: 0.9em; color: #666;">Private BA Counselling</span>
-							</div>
-						</div>
-						<p>“Thankful for the private exam guidance. They helped with BA admission.”</p>
-					</div>
-
-				</div>
-			</div>
-		</div>
-
-		<div class="elementor-element elementor-element-236a8bb e-flex e-con-boxed e-con e-parent" style="background: #333; color: white; padding: 40px 20px;">
-			<div class="e-con-inner" style="display: flex; flex-wrap: wrap; justify-content: space-between;">
-				<div style="flex: 1; min-width: 300px; margin-bottom: 20px;">
-					<h2 style="color: #F35C00;">Unique Skill Academy</h2>
-					<p>Empowering Careers Through Practical Learning.</p>
-					<div style="margin-top: 10px;">
-						<a href="https://www.facebook.com/USA4MCU" style="color: white; margin-right: 10px;"><i class="fab fa-facebook"></i></a>
-						<a href="https://www.instagram.com/unique_skils_academy" style="color: white; margin-right: 10px;"><i class="fab fa-instagram"></i></a>
-					</div>
-				</div>
-				<div style="flex: 1; min-width: 300px;">
-					<h3 style="color: #F35C00;">Get In Touch</h3>
-					<ul style="list-style: none; padding: 0;">
-						<li style="margin-bottom: 10px;"><i class="fas fa-map-marker-alt"></i> 68, New MLA Colony, Jawahar Chowk, Bhopal – 462003</li>
-						<li style="margin-bottom: 10px;"><i class="far fa-envelope"></i> usa4mcu@gmail.com</li>
-						<li style="margin-bottom: 10px;"><i class="fas fa-phone-alt"></i> +91-73892 03337</li>
-						<li style="margin-bottom: 10px;"><i class="fas fa-phone-alt"></i> +91 70009 39803</li>
-					</ul>
-				</div>
-			</div>
-		</div>
-
-	</div>
-
-	<script src='https://slateblue-quetzal-288474.hostingersite.com/wp-includes/js/jquery/jquery.min.js?ver=3.7.1' id='jquery-core-js'></script>
-	<script src='https://slateblue-quetzal-288474.hostingersite.com/wp-content/plugins/elementor/assets/js/frontend.min.js?ver=3.33.3' id='elementor-frontend-js'></script>
 </body>
 </html>
